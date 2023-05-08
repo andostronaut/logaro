@@ -74,11 +74,9 @@ func (l *Logger) WithSerializers(serializers map[string]func(interface{}) interf
 	child := l.Child(nil)
 
 	child.Serializer = func(data interface{}) interface{} {
-		if serializers != nil {
-			for key, serializer := range serializers {
-				if val, ok := data.(map[string]interface{})[key]; ok {
-					data.(map[string]interface{})[key] = serializer(val)
-				}
+		for key, serializer := range serializers {
+			if val, ok := data.(map[string]interface{})[key]; ok {
+				data.(map[string]interface{})[key] = serializer(val)
 			}
 		}
 
