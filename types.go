@@ -19,6 +19,16 @@ type Logger struct {
 	Serializer  func(data interface{}) interface{}
 }
 
+// LogEntry represents a log entry structure.
+// It defines the structure of a log entry with various fields.
+//   - Timestamp: the timestamp when the log entry was created.
+//   - Message: the log message.
+//   - Level: the severity level of the log entry.
+//   - Fields: additional fields associated with the log entry (optional).
+//     These fields provide extra context or information about the log event.
+//     They are stored as key-value pairs in a map[string]interface{}.
+//     The "omitempty" tag ensures that the "fields" field is omitted from the JSON output
+//     if no additional fields are present in the log entry.
 type LogEntry struct {
 	Timestamp string                 `json:"timestamp"`
 	Message   string                 `json:"message"`
