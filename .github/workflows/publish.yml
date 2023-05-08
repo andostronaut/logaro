@@ -1,0 +1,29 @@
+name: publish
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+
+      matrix:
+        go-version:
+          - 1.19
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-go@v3
+        with:
+          go-version: ${{ matrix.go-version }}
+
+      - run: go version
+
+      - run: go install
+
+      - run: GOPROXY=proxy.golang.org go list -m github.com/iamando/logaro
