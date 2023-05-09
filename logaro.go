@@ -7,6 +7,12 @@ import (
 	"time"
 )
 
+// GenerateLogger creates a new logger instance with the specified configuration.
+// It initializes a Logger struct with the provided log level and output writer.
+// - level: the log level for the logger.
+// - writer: the JSON encoder used for writing log entries.
+// Returns the newly created logger instance.
+// The logger is initialized with default settings for parent, children, event fields, and serializer.
 func GenerateLogger() *Logger {
 	return &Logger{
 		Level:       "info",
