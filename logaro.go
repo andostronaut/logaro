@@ -110,32 +110,6 @@ func (l *Logger) WithSerializers(serializers map[string]func(interface{}) interf
 	return child
 }
 
-// mergeFields merges the event fields from the parent logger with the current logger's event fields
-// and the additional fields provided as a parameter.
-// It creates a new map to hold the merged fields and copies the parent's event fields into it.
-// Then it adds the current logger's event fields and the additional fields to the merged map.
-// Returns the merged map of event fields, combining the inherited fields from the parent logger
-// with the current logger's fields and the additional fields provided as a parameter.
-// The function is used to create a consolidated set of event fields for log entries,
-// ensuring that all relevant fields are included in the log context.
-func (l *Logger) mergeFields(fields map[string]interface{}) map[string]interface{} {
-	mergedFields := make(map[string]interface{})
-
-	if l.Parent != nil {
-		mergedFields = l.Parent.mergeFields(l.Parent.EventFields)
-	}
-
-	for key, val := range l.EventFields {
-		mergedFields[key] = val
-	}
-
-	for key, val := range fields {
-		mergedFields[key] = val
-	}
-
-	return mergedFields
-}
-
 // serializeEntry applies the logger's serializer function to the log entry.
 // If a serializer is set for the logger, it applies the serializer function to the log message
 // and the fields of the entry, allowing custom modification or formatting of the log entry.
