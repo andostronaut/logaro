@@ -104,6 +104,15 @@ func (l *Logger) WithFields(fields map[string]interface{}) *Logger {
 	return child
 }
 
+// WithSerializers creates a child logger with custom serializers for specific fields.
+// It creates a new child logger instance based on the current logger.
+// The child logger inherits the log level from the parent logger.
+// It adds custom serializers for specific fields to the child logger's serializer.
+// The serializers are applied to the corresponding fields during log entry serialization,
+// allowing custom formatting or modification of specific fields.
+// Returns the newly created child logger with the added serializers.
+// The child logger can be used to log with the inherited log level,
+// and the added serializers provide customization for specific fields during serialization.
 func (l *Logger) WithSerializers(serializers map[string]func(interface{}) interface{}) *Logger {
 	child := l.Child(nil)
 
