@@ -23,6 +23,41 @@ To use Logaro in your Go project, you need to have Go installed and set up. Then
 go get github.com/iamando/logaro
 ```
 
+## Usage
+
+Here's a basic example of how to use Logaro:
+
+```go
+package main
+
+import "github.com/your-username/logaro"
+
+
+func main() {
+ // Create a logger
+ logger := logaro.GenerateLogger()
+
+ // Log a message
+ logger.Log("info", "Hello, Logaro!")
+
+ // Log a message with additional fields
+ logger.Log("error", "An error occurred", map[string]interface{}{
+  "error_code": 500,
+  "error_msg":  "Internal Server Error",
+ })
+
+ // Create a child logger with additional fields
+ childLogger := logger.WithFields(map[string]interface{}{
+  "component": "subsystemA",
+ })
+
+ // Log from the child logger
+ childLogger.Log("debug", "Debug message from subsystemA")
+}
+```
+
+For more detailed examples and advanced usage, please refer to the [examples](/examples) directory.
+
 ## Support
 
 Logaro is an MIT-licensed open source project. It can grow thanks to the sponsors and support.
