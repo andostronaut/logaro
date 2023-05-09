@@ -90,6 +90,13 @@ func (l *Logger) Child(fields map[string]interface{}) *Logger {
 	return child
 }
 
+// WithFields creates a child logger with additional event fields.
+// It creates a new child logger instance based on the current logger.
+// The child logger inherits the log level from the parent logger.
+// Additionally, it adds the specified additional event fields to its own fields.
+// Returns the newly created child logger with the added event fields.
+// The child logger can be used to log with the inherited log level and the additional context
+// provided by the added event fields, allowing more specific and detailed log entries.
 func (l *Logger) WithFields(fields map[string]interface{}) *Logger {
 	child := l.Child(fields)
 	child.Serializer = l.Serializer
