@@ -7,6 +7,9 @@ import (
 	"time"
 )
 
+// GenerateLogger creates a new logger instance with the specified configuration.
+// It initializes a Logger struct with the provided log level and output writer.
+// Returns the newly created logger.
 func GenerateLogger() *Logger {
 	return &Logger{
 		Level:       "info",
