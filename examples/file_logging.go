@@ -8,7 +8,7 @@ import (
 	"github.com/iamando/logaro"
 )
 
-func main() {
+func init() {
 	// Open the log file for writing
 	file, err := os.OpenFile("application.log", os.O_WRONLY|os.O_CREATE|os.O_APPEND, 0644)
 	if err != nil {
