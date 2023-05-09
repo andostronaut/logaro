@@ -73,6 +73,12 @@ func (l *Logger) isEnabled(level string) bool {
 	return levels[level] >= levels[l.Level]
 }
 
+// Child creates a child logger with additional event fields.
+// It creates a new logger instance as a child of the current logger.
+// The child logger inherits the log level and event fields from the parent logger.
+// Additionally, it adds the specified additional event fields to its own fields.
+// Returns the newly created child logger that can be used for logging with added context.
+// Child loggers provide a hierarchical structure to organize and filter log entries.
 func (l *Logger) Child(fields map[string]interface{}) *Logger {
 	child := GenerateLogger()
 	child.Level = l.Level
