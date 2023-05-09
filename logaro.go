@@ -54,6 +54,13 @@ func (l *Logger) Log(level, message string, fields map[string]interface{}) {
 	}
 }
 
+// isEnabled checks if the given log level is enabled based on the logger's configured level.
+// It uses a map to associate the log levels with numeric values.
+// The function compares the numeric log levels of the given level and the logger's level.
+// Returns true if the given level is enabled (its numeric value is greater than or equal to
+// the logger's numeric level value), false otherwise.
+// The function allows determining if a log entry with a specific level should be logged
+// based on the logger's configured log level.
 func (l *Logger) isEnabled(level string) bool {
 	levels := map[string]int{
 		"fatal": 5,
