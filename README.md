@@ -15,6 +15,14 @@
 - Hierarchical loggers to organize and inherit log settings.
 - Support for serializers to transform log message and field values.
 
+## Installation
+
+To use Logaro in your Go project, you need to have Go installed and set up. Then, run the following command to install the package:
+
+```bash
+go get github.com/iamando/logaro
+```
+
 ## Support
 
 Logaro is an MIT-licensed open source project. It can grow thanks to the sponsors and support.
