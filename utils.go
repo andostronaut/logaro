@@ -66,21 +66,33 @@ func (l *Logger) serializeEntry(entry LogEntry) LogEntry {
 	return entry
 }
 
+// compareLogEntries compares two log entries for equality.
+// It performs a field-level comparison of the log entries, checking the equality of the
+// Timestamp, Message, Level, and Fields. Returns true if the log entries are equal,
+// and false otherwise. The function is used to validate the correctness of captured
+// log entries by comparing them against expected log entries in test cases.
+// It helps ensure that the logged information, including the timestamp, log message,
+// log level, and additional fields, is matching the expected values.
 func compareLogEntries(a, b LogEntry) bool {
-	// Compare Timestamp, Message, Level, and Fields
 	return a.Timestamp == b.Timestamp &&
 		a.Message == b.Message &&
 		a.Level == b.Level &&
+
 		compareFields(a.Fields, b.Fields)
 }
 
+// compareFields compares two maps of log fields for equality.
+// It performs a key-value comparison of the fields, checking the equality of both keys and values.
+// Returns true if the field maps are equal, and false otherwise. The function is used as a helper
+// function in comparing log entries, specifically the fields section, to validate the correctness
+// of the captured log entries against expected log entries in test cases. It ensures that the
+// field maps contain the same keys with matching values, confirming that the logged fields are
+// consistent and accurate in the captured log entry.
 func compareFields(a, b map[string]interface{}) bool {
-	// Compare the lengths of the fields maps
 	if len(a) != len(b) {
 		return false
 	}
 
-	// Compare each key-value pair in the fields maps
 	for key, valA := range a {
 		valB, ok := b[key]
 		if !ok || !compareFieldValues(valA, valB) {
@@ -91,10 +103,18 @@ func compareFields(a, b map[string]interface{}) bool {
 	return true
 }
 
+// compareFieldValues compares two field values for equality.
+// It marshals the values to JSON and compares their byte representations.
+// Returns true if the field values are equal, and false otherwise. The function is used
+// as a helper function in comparing log entries to validate the correctness of the captured
+// log entries against expected log entries in test cases. It ensures that the field values
+// are consistent and accurate in the captured log entry by comparing their JSON
+// representations. If the marshaling fails or the byte representations differ, the function
+// returns false, indicating a mismatch between the field values.
 func compareFieldValues(a, b interface{}) bool {
-	// Marshal and compare the JSON representations of the field values
 	bytesA, errA := json.Marshal(a)
 	bytesB, errB := json.Marshal(b)
+
 	if errA != nil || errB != nil {
 		return false
 	}
