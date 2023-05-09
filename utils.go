@@ -66,11 +66,18 @@ func (l *Logger) serializeEntry(entry LogEntry) LogEntry {
 	return entry
 }
 
+// compareLogEntries compares two log entries for equality.
+// It performs a field-level comparison of the log entries, checking the equality of the
+// Timestamp, Message, Level, and Fields. Returns true if the log entries are equal,
+// and false otherwise. The function is used to validate the correctness of captured
+// log entries by comparing them against expected log entries in test cases.
+// It helps ensure that the logged information, including the timestamp, log message,
+// log level, and additional fields, is matching the expected values.
 func compareLogEntries(a, b LogEntry) bool {
-	// Compare Timestamp, Message, Level, and Fields
 	return a.Timestamp == b.Timestamp &&
 		a.Message == b.Message &&
 		a.Level == b.Level &&
+
 		compareFields(a.Fields, b.Fields)
 }
 
