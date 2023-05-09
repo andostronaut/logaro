@@ -7,7 +7,7 @@ import (
 	"time"
 )
 
-func TestLogger_Log(t *testing.T) {
+func TestGenerateLogger(t *testing.T) {
 	// Create a buffer to capture the log output
 	buf := new(bytes.Buffer)
 
