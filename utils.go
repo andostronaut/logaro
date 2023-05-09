@@ -81,13 +81,18 @@ func compareLogEntries(a, b LogEntry) bool {
 		compareFields(a.Fields, b.Fields)
 }
 
+// compareFields compares two maps of log fields for equality.
+// It performs a key-value comparison of the fields, checking the equality of both keys and values.
+// Returns true if the field maps are equal, and false otherwise. The function is used as a helper
+// function in comparing log entries, specifically the fields section, to validate the correctness
+// of the captured log entries against expected log entries in test cases. It ensures that the
+// field maps contain the same keys with matching values, confirming that the logged fields are
+// consistent and accurate in the captured log entry.
 func compareFields(a, b map[string]interface{}) bool {
-	// Compare the lengths of the fields maps
 	if len(a) != len(b) {
 		return false
 	}
 
-	// Compare each key-value pair in the fields maps
 	for key, valA := range a {
 		valB, ok := b[key]
 		if !ok || !compareFieldValues(valA, valB) {
