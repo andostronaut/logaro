@@ -2,7 +2,7 @@ package examples
 
 import "github.com/iamando/logaro"
 
-func main() {
+func init() {
 	// Create a logger
 	logger := logaro.GenerateLogger()
 
