@@ -24,6 +24,11 @@ func GenerateLogger() *Logger {
 	}
 }
 
+// Log logs a message at the specified level, along with optional additional fields.
+// It checks if the logger is enabled for the given log level and constructs a LogEntry.
+// The LogEntry includes a timestamp, log message, log level, and merged event fields.
+// If a serializer is set, it applies the serializer to the log entry before encoding.
+// Finally, it encodes the log entry using the logger's JSON encoder.
 func (l *Logger) Log(level, message string, fields map[string]interface{}) {
 	if l.isEnabled(level) {
 		entry := LogEntry{
