@@ -103,10 +103,18 @@ func compareFields(a, b map[string]interface{}) bool {
 	return true
 }
 
+// compareFieldValues compares two field values for equality.
+// It marshals the values to JSON and compares their byte representations.
+// Returns true if the field values are equal, and false otherwise. The function is used
+// as a helper function in comparing log entries to validate the correctness of the captured
+// log entries against expected log entries in test cases. It ensures that the field values
+// are consistent and accurate in the captured log entry by comparing their JSON
+// representations. If the marshaling fails or the byte representations differ, the function
+// returns false, indicating a mismatch between the field values.
 func compareFieldValues(a, b interface{}) bool {
-	// Marshal and compare the JSON representations of the field values
 	bytesA, errA := json.Marshal(a)
 	bytesB, errB := json.Marshal(b)
+
 	if errA != nil || errB != nil {
 		return false
 	}
