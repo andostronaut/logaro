@@ -155,6 +155,13 @@ func (l *Logger) mergeFields(fields map[string]interface{}) map[string]interface
 	return mergedFields
 }
 
+// serializeEntry applies the logger's serializer function to the log entry.
+// If a serializer is set for the logger, it applies the serializer function to the log message
+// and the fields of the entry, allowing custom modification or formatting of the log entry.
+// Returns the serialized log entry with the log message and fields modified by the serializer,
+// ensuring that the log data is transformed according to the specified serialization logic.
+// The function is used to customize the serialization process for specific log entries
+// based on the serializer function set for the logger.
 func (l *Logger) serializeEntry(entry LogEntry) LogEntry {
 	if l.Serializer != nil {
 		entry.Message = l.Serializer(entry.Message).(string)
