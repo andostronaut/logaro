@@ -58,6 +58,10 @@ func main() {
 
 For more detailed examples and advanced usage, please refer to the [examples](/examples) directory.
 
+## Documentation
+
+For detailed documentation and API reference, please refer to the [GoDoc](https://godoc.org/github.com/iamando/logaro) page.
+
 ## Support
 
 Logaro is an MIT-licensed open source project. It can grow thanks to the sponsors and support.
