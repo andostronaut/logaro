@@ -96,6 +96,14 @@ Represents a log entry containing the log message, log level, and additional fie
 - `Fields map[string]interface{}`
   Additional fields associated with the log entry.
 
+### `func NewLogger() *Logger`
+
+Creates a new instance of the `Logger` with default settings.
+
+This API section provides an overview of the available types, methods, and functions in the Logaro package. Please refer to the code documentation and examples for more details on how to use the API effectively.
+
+Feel free to customize and expand upon this API section based on your specific package functionality and features.
+
 ## Documentation
 
 For detailed documentation and API reference, please refer to the [GoDoc](https://godoc.org/github.com/iamando/logaro) page.
