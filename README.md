@@ -38,7 +38,7 @@ func main() {
  logger := logaro.GenerateLogger()
 
  // Log a message
- logger.Log("info", "Hello, Logaro!")
+ logger.Log("info", "Hello, Logaro!", nil)
 
  // Log a message with additional fields
  logger.Log("error", "An error occurred", map[string]interface{}{
@@ -52,7 +52,7 @@ func main() {
  })
 
  // Log from the child logger
- childLogger.Log("debug", "Debug message from subsystemA")
+ childLogger.Log("debug", "Debug message from subsystemA", nil)
 }
 ```
 
