@@ -58,6 +58,25 @@ func main() {
 
 For more detailed examples and advanced usage, please refer to the [examples](/examples) directory.
 
+## Output
+
+Using Logaro, the log entries can be output in a JSON format. Here's an example of how the log entries would appear when logged to the standard output:
+
+```json
+{"timestamp":"2023-05-10T10:30:45Z","message":"This is an informational message","level":"info","fields":null}
+{"timestamp":"2023-05-10T10:30:45Z","message":"This is a warning message","level":"warn","fields":null}
+{"timestamp":"2023-05-10T10:30:45Z","message":"This is an error message","level":"error","fields":null}
+{"timestamp":"2023-05-10T10:30:45Z","message":"Debugging information","level":"debug","fields":{"user_id":123,"request_id":"abc123"}}
+{"timestamp":"2023-05-10T10:30:45Z","message":"Child logger message","level":"info","fields":{"component":"subsystemA"}}
+{"timestamp":"2023-05-10T10:30:45Z","message":"Custom serialization example","level":"info","fields":{"field":"Value"}}
+```
+
+The log entries are represented as JSON objects, where each object contains the `timestamp`, `message`, `level`, and `fields` properties. The `fields` property contains additional key-value pairs associated with the log entry.
+
+Please note that the actual log output may vary based on the specific log messages, log levels, and fields provided in your application.
+
+Feel free to customize and expand upon this output example section based on your specific package functionality and desired log format.
+
 ## API
 
 ### `type Logger`
