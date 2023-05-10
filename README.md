@@ -58,6 +58,26 @@ func main() {
 
 For more detailed examples and advanced usage, please refer to the [examples](/examples) directory.
 
+## API
+
+### `type Logger`
+
+Represents a logger instance that can be used to log messages at different levels.
+
+#### Methods
+
+- `Log(level string, message string, fields map[string]interface{})`
+  Logs a message at the specified log `level`. Additional `fields` can be provided as a map of key-value pairs.
+
+- `Child(fields map[string]interface{}) *Logger`
+  Creates a child logger with the specified additional `fields`. The child logger inherits the log settings and fields from its parent.
+  ssss
+- `WithFields(fields map[string]interface{}) *Logger`
+  Creates a child logger with the specified additional `fields`. The child logger inherits the log settings and fields from its parent.
+
+- `WithSerializers(serializers map[string]func(interface{}) interface{}) *Logger`
+  Creates a child logger with custom `serializers` for transforming log message and field values. The serializers argument should be a map where the keys represent the fields to be serialized and the values are functions that perform the serialization.
+
 ## Documentation
 
 For detailed documentation and API reference, please refer to the [GoDoc](https://godoc.org/github.com/iamando/logaro) page.
