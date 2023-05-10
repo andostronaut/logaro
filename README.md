@@ -30,7 +30,7 @@ Here's a basic example of how to use Logaro:
 ```go
 package main
 
-import "github.com/your-username/logaro"
+import "github.com/iamando/logaro"
 
 
 func main() {
