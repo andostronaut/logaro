@@ -78,11 +78,11 @@ Represents a logger instance that can be used to log messages at different level
 - `WithSerializers(serializers map[string]func(interface{}) interface{}) *Logger`
   Creates a child logger with custom `serializers` for transforming log message and field values. The serializers argument should be a map where the keys represent the fields to be serialized and the values are functions that perform the serialization.
 
-## `type LogEntry`
+### `type LogEntry`
 
 Represents a log entry containing the log message, log level, and additional fields.
 
-### Fields
+#### Fields
 
 - `Timestamp string`
   The timestamp of the log entry in RFC3339 format.
